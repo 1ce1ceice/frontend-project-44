@@ -2,22 +2,25 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "brain-games",
-  "type": "module" ,
+  "type": "module",
   "bin": {
     "brain-games": "bin/brain-games.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  
-  
-  
-  
-  
   "author": "",
-  "license": "ISC"
-  
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "globals": "^15.0.0"
+  }
 }
-
-
-
