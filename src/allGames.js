@@ -19,6 +19,9 @@ const rulesOfGame = (nameGame) => {
     case 'brain-even':
       console.log('Answer "yes" if the number is even, otherwise answer "no".');
       break;
+    case 'brain-calc':
+      console.log('What is the result of the expression?');
+      break;
     default:
   }
 };
