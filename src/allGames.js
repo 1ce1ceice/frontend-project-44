@@ -24,6 +24,9 @@ const rulesOfGame = (nameGame) => {
     case 'brain-calc':
       console.log('What is the result of the expression?');
       break;
+    case 'brain-gcd':
+      console.log('Find the greatest common divisor of given numbers.');
+      break;
     default:
   }
 };
@@ -53,6 +56,9 @@ const question = (nameGame) => {
     case 'brain-calc':
       questionResult = console.log(`${'Question:'} ${firstRandomNumber} ${sign} ${secondRandomNumber}`);
       break;
+    case 'brain-gcd':
+      questionResult = console.log(`${'Question:'} ${firstRandomNumber} ${secondRandomNumber}`);
+      break;
     default:
       console.log('Sorry, something wrong');
       break;
@@ -81,6 +87,13 @@ const brainCalcCorrectAnswer = (a, b) => {
   return CorrectAnswer;
 };
 
+const brainGcdCorrectAnswer = (a, b) => {
+  if (!b) {
+    return a;
+  }
+  return brainGcdCorrectAnswer(b, a % b);
+};
+
 const correctAnswer = (nameGame) => {
   switch (nameGame) {
     case 'brain-even':
@@ -88,6 +101,9 @@ const correctAnswer = (nameGame) => {
       break;
     case 'brain-calc':
       brainCalcCorrectAnswer(firstRandomNumber, secondRandomNumber);
+      break;
+    case 'brain-gcd':
+      CorrectAnswer = brainGcdCorrectAnswer(firstRandomNumber, secondRandomNumber);
       break;
     default:
       console.log('Sorry, something wrong');
