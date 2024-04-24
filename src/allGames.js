@@ -33,6 +33,9 @@ const rulesOfGame = (nameGame) => {
     case 'brain-progression':
       console.log('What number is missing in the progression?');
       break;
+    case 'brain-prime':
+      console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+      break;
     default:
   }
 };
@@ -85,6 +88,9 @@ const question = (nameGame) => {
     case 'brain-progression':
       questionResult = console.log(`${'Question:'} ${progression(firstRandomNumber, stepProgress)}`);
       break;
+    case 'brain-prime':
+      questionResult = console.log(`${'Question:'} ${firstRandomNumber}`);
+      break;
     default:
       console.log('Sorry, something wrong');
       break;
@@ -121,6 +127,15 @@ const brainGcdCorrectAnswer = (a, b) => {
   return brainGcdCorrectAnswer(b, a % b);
 };
 
+const brainPrimeCorrectAnswer = (a) => {
+  for (let i = 2; i < a; i += 1) {
+    if (a % i === 0) {
+      return 'no';
+    }
+  }
+  return 'yes';
+};
+
 const correctAnswer = (nameGame) => {
   switch (nameGame) {
     case 'brain-even':
@@ -134,6 +149,9 @@ const correctAnswer = (nameGame) => {
       break;
     case 'brain-progression':
       CorrectAnswer = ProgressionNumber;
+      break;
+    case 'brain-prime':
+      CorrectAnswer = brainPrimeCorrectAnswer(firstRandomNumber);
       break;
     default:
       console.log('Sorry, something wrong');
