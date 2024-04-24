@@ -4,6 +4,8 @@ let GameOver;
 let userName;
 let CorrectAnswer;
 let firstRandomNumber;
+let secondRandomNumber;
+let sign;
 
 const greetings = () => {
   userName = readlineSync.question('Welcome to the Brain Games! \nMay I have your name? ');
@@ -32,12 +34,24 @@ function getRandom(min, max) {
   return Math.floor(Math.random() * (maxCopy - minCopy)) + minCopy;
 }
 
+const getRandomMathSign = () => {
+  const arr = ['+', '-', '*'];
+  const i = Math.floor(Math.random() * arr.length);
+  const operator = arr[i];
+  return operator;
+};
+
 const question = (nameGame) => {
   firstRandomNumber = getRandom(2, 100);
+  secondRandomNumber = getRandom(1, 100);
+  sign = getRandomMathSign();
   let questionResult;
   switch (nameGame) {
     case 'brain-even':
       questionResult = console.log(`${'Question:'} ${firstRandomNumber}`);
+      break;
+    case 'brain-calc':
+      questionResult = console.log(`${'Question:'} ${firstRandomNumber} ${sign} ${secondRandomNumber}`);
       break;
     default:
       console.log('Sorry, something wrong');
@@ -56,11 +70,24 @@ const brainEvenCorrectAnswer = (a) => {
   }
   return CorrectAnswer;
 };
+const brainCalcCorrectAnswer = (a, b) => {
+  if (sign === '+') {
+    CorrectAnswer = a + b;
+  } else if (sign === '-') {
+    CorrectAnswer = a - b;
+  } else {
+    CorrectAnswer = a * b;
+  }
+  return CorrectAnswer;
+};
 
 const correctAnswer = (nameGame) => {
   switch (nameGame) {
     case 'brain-even':
       brainEvenCorrectAnswer(firstRandomNumber);
+      break;
+    case 'brain-calc':
+      brainCalcCorrectAnswer(firstRandomNumber, secondRandomNumber);
       break;
     default:
       console.log('Sorry, something wrong');
