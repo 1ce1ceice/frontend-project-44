@@ -7,6 +7,9 @@ let firstRandomNumber;
 let secondRandomNumber;
 let sign;
 
+let ProgressionNumber;
+let stepProgress;
+
 const greetings = () => {
   userName = readlineSync.question('Welcome to the Brain Games! \nMay I have your name? ');
   console.log(`${'Hello,'} ${userName}${'!'}`);
@@ -27,6 +30,9 @@ const rulesOfGame = (nameGame) => {
     case 'brain-gcd':
       console.log('Find the greatest common divisor of given numbers.');
       break;
+    case 'brain-progression':
+      console.log('What number is missing in the progression?');
+      break;
     default:
   }
 };
@@ -44,6 +50,23 @@ const getRandomMathSign = () => {
   return operator;
 };
 
+const progression = () => {
+  stepProgress = getRandom(2, 10);
+  const hideOfIndexNumber = getRandom(1, 10);
+  let arr = [];
+  const endProgression = firstRandomNumber + stepProgress * 10;
+  for (
+    let i = firstRandomNumber;
+    i < endProgression;
+    i += stepProgress
+  ) {
+    arr.push(i);
+  }
+  ProgressionNumber = arr.splice(hideOfIndexNumber, 1, '..');
+  arr = arr.join(' ');
+  return arr;
+};
+
 const question = (nameGame) => {
   firstRandomNumber = getRandom(2, 100);
   secondRandomNumber = getRandom(1, 100);
@@ -58,6 +81,9 @@ const question = (nameGame) => {
       break;
     case 'brain-gcd':
       questionResult = console.log(`${'Question:'} ${firstRandomNumber} ${secondRandomNumber}`);
+      break;
+    case 'brain-progression':
+      questionResult = console.log(`${'Question:'} ${progression(firstRandomNumber, stepProgress)}`);
       break;
     default:
       console.log('Sorry, something wrong');
@@ -76,6 +102,7 @@ const brainEvenCorrectAnswer = (a) => {
   }
   return CorrectAnswer;
 };
+
 const brainCalcCorrectAnswer = (a, b) => {
   if (sign === '+') {
     CorrectAnswer = a + b;
@@ -104,6 +131,9 @@ const correctAnswer = (nameGame) => {
       break;
     case 'brain-gcd':
       CorrectAnswer = brainGcdCorrectAnswer(firstRandomNumber, secondRandomNumber);
+      break;
+    case 'brain-progression':
+      CorrectAnswer = ProgressionNumber;
       break;
     default:
       console.log('Sorry, something wrong');
