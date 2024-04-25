@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import runGameWithCounter from '../src/allGames.js';
+import startCalcGame from '../src/games/brain-calc.js';
 
-runGameWithCounter('brain-calc');
+startCalcGame();
